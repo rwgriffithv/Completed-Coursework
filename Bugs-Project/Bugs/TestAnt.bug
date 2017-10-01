@@ -1,0 +1,61 @@
+colony: MarcoAnt// first line specifies the ant's name
+ 
+// This program controls a single ant and causes it to move
+// around the field and do things.
+// This ant moves around randomly, picks up food if it
+// happens to stumble upon it, eats when it gets hungry,
+// and will drop food on its anthill if it happens to 
+// stumble back on its anthill while holding food.
+ 
+// here's the ant's programming instructions, written
+// in our 'Bugs' language
+ 
+start:
+	if i_am_standing_on_my_anthill then goto on_hill
+	if i_am_standing_on_food then goto on_food
+ 	goto on_move
+ 	goto start 	// jump back to the "start:" line
+
+on_hill:
+	if i_am_carrying_food then goto drop_food    // feed the anthill's queen so she
+                 				// can produce more ants for the colony
+	emitPheromone
+	goto on_move
+
+drop_food:
+	dropFood
+	goto on_hill
+
+on_food:
+	pickUpFood
+	if i_am_hungry then goto eat_food
+	goto on_move
+ 
+eat_food:
+ 	//if i_am_carrying_food then eatFood   // assumes our ant has already picked up food
+ 	goto start 	// jump back to the "start:" line
+
+smell_pheromone:
+	moveForward
+	goto start
+
+bite_enemy:
+	bite
+	goto start
+
+on_rotate:
+	faceRandomDirection
+	moveForward
+	goto start
+
+on_move:
+	if i_smell_pheromone_in_front_of_me then goto smell_pheromone
+	generateRandomNumber 5
+	if last_random_number_was_zero then goto on_rotate
+	if i_am_standing_with_an_enemy then goto bite_enemy
+	emitPheromone
+	if i_was_blocked_from_moving then goto on_rotate
+	if i_smell_danger_in_front_of_me then goto on_rotate
+	moveForward
+	goto start
+	
