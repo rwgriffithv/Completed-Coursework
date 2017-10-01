@@ -1,4 +1,5 @@
 # Bugs Project
+*3 March 2017*
 
 This project was focused on object oriented programming in C++. <br />
 Microsoft Visual Studio 2015 was used to devlop the program.
