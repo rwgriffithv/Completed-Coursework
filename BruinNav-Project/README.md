@@ -1,4 +1,5 @@
-# BruinNav Project
+## BruinNav Project
+*16 March 2017*
 
 This project concerned constructing classes and writing an accurate algorithm in C++ that met a certain order requirement. <br />
 The algorithm was required to find the shortest possible route between two "attractions" listed in validlocs.txt. <br />
