@@ -1,0 +1,21 @@
+Robert Griffith
+304 833 256
+
+MyMap:
+	associate():	If MyMap holds N nodes, associate is O(log(N)).
+	find():		If MyMap holds N nodes, find is O(log(N)).
+
+AttractionMapper:
+	init():		If the passed MapLoader holds a total of S StreetSegments and A 
+			attractions, init is O(S+A*log(A)).
+	getGeoCoord():	If the AttractionMapper holds A attractions, getGeoCoord is O(log(A)).
+
+SegmentMapper:
+	init():		If the passed MapLoader holds a total of S StreetSegments and a total of A
+			attractions, init is O((S+A)*log(S+A)).
+	getSegments():	If the SegmentMapper holds V vectors StreetSegments, getSegments is O(log(V)).
+Navigator:
+	navigate():	If the function assesses (pops from the priority queue and gets segments around it)
+			C coordinates, there is an average of S StreetSegments that meet at a
+			coordinate, there are V vectors that collectively hold all StreetSegments, and 
+			there is a total of A attractions, navigate is O(log(A) + C*log(C) + C*log(V) + C*S).
