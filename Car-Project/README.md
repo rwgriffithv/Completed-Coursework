@@ -11,3 +11,5 @@ Final_Test.mov contains a video of part of the final test our car was judged on.
 The turns it makes were sharper than the day before, and we believe this to be due to the nine volt battery and the Arduino Nano's internal battery running low after a week of testing and no replacement or charging. <br />
 This most likely lead to lower voltage being supplied to the LEDs and/or the photodiodes, so the readings that were being processed by the Arduino Code were off. <br />
 This slight issue only subtly affected the performance of our car, which irked me no less, and the car still easily passed every single test it was being assessed on.
+
+The specific requirements of the final report are found in Final_Report_Guidelines.pdf.
