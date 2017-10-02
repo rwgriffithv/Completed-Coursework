@@ -1,0 +1,24 @@
+1.
+The instruction at 0x547920 causes the problem.
+lea 0x2(,%rbp,4),%rax
+Emacs identifies values by using the two least significant bits as flag bits, and after calculating the correct result and storing it in rbp, Ftimes shifts the answer left by two and ads two (the bit representation 10 is the emacs flag used in this case) in an attempt to convert the answer into a format that emacs can process as a signed integer.
+The two most significant bits are lost in the left shift of the result, and the most significant bit is now a zero so when the 62 bit value stored in emacs is right shifted to be a normal 64 bit value the result is positive and the entire value of the result has been changed.
+
+2.
+With the way emacs uses the two least significant bits to mark the data type of a value, it has 62 bits to store a number.
+Thus emacs has a "most negative fixed number" of -2^(61), which is equal to -2305843009213693952.
+To convert this value to a 64 bit representation you perform a right arithmetic shift so the signed bit is replicated and the data type marker bits are lost, preserving the value with a hex representation of 0x11100000.
+Also, if emacs tried to take LONG_MIN, the most negative value that can be stored in signed 64 bits (0x80000000), in order to store it the 
+
+3.
+With the way emacs uses the two least significant bits to mark the data type of a value, it has 62 bits to store a number.
+The maximum integer type value it stores is 2305843009213693951, and this to the power of four results in a hex value of f ffff ffff ffff fe00 0000 0000 0000 17ff ffff ffff ffff 8000 0000 0000 0001, but it only keeps the least significant 62 bits of this, so when converted to a 64 bit format by shifting right by 2 the result is 0x00000001.
+
+4.
+There would not be a problem with compiling with -fwrapv, as wraparound arithmetic with signed integers is already utilized so there would be no issue with compiling with -fwrapv, as wraparound arithmetic is already implemented.
+-fwrapv would not prohibit the OF bit in rflags being flagged, so no errors in detecting overflow should occur.
+
+5.
+tzstring is a long string of Xs, and the code attempts to copy this into a destination pointed to by tzval + tzeqlen. Tracing through __strcpy_sse2_unaligned, I was able to find the source of the segmentation fault to be the copying of 1000 Xs into a location that does not have enough memory. The code tries to copy the string of Xs into memory by moving from xmm registers, and does so successfuly until the Xs stored in xmm7 are moved into 0x149affa, and read/write memory is bounded by 0x149b00, so by moving those bytes there is illegal memory access so the program crashes with a segmentation fault.
+
+The code is supposed to check to see if there is enough space to do such a string copy of zone_size bytes, but due to the large size of the input timezone string the source code "if(zone_size < tz->abbrs + ABBR_SIZE_MIN - zone_copy)" compares a positive zone_size to a negative right side result. The machine code that evaluates which path to jump to is "jae", so the comparison is unsigned, and evaluates to true when it should be false. Thus, the program thinks there is enough space and proceeds to call strcpy which is where I began my trace of __strcpy_sse2_unaligned.

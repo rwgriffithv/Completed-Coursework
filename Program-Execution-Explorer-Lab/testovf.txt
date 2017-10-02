@@ -1,0 +1,26 @@
+[Compiled with GCC 6.3.0]
+
+When compiled with -O2 the resulting assembly file only contains one operation followed by a return:
+	xorl	%eax, %eax
+	ret
+This sets the value stored in rax to zero so the function will always return zero.
+The code compiled this way because the constant in the function is the max value of a signed integer so any addition with a non-positive n (0 or negative) results in the boolean expression being false, and any addition with a positive n results in signed integer overflow, which is undefined, so the compiler makes it so the function always returns false.
+
+
+When compiled with -O2 -frwapv the resulting assemply file contains four operations followed by a return:
+	movabsq	$9223372036854775807, %rax
+
+	addq	%rcx, %rax
+
+	cmpq	%rax, %rcx
+
+	setg	%al
+
+	ret
+With integer overflow now defined (-fwrapv) the constant is moved into rax, and can now be added with n (which is in rcx) as signed integer overflow is now defined and the sign bit can be changed (values will wrap around from INT_MAX to INT_MIN and vice versa).
+n, in rcx, is compared to the sum, in rax, and if n is greater rax will be set to 1, otherwise rax is set to 0. This is all justified by -fwrapv which allows the signed integer addition to wrap around.
+
+
+When compiled with -O2 -fsanitize=undefined the resulting assembly file is longer than both previous files, and utilizes jumps as well as a calls to exception handling functions and __ubsan_handle_add_overflow. Due to the call to these functions, rsi and rbx are stored on the stack and INT_MAX is moved into r8 instead of rax (as seen when the testovf is compiled with -O2 -fwrapv) in order to preserve their values.
+n and and INT_MAX are added, and if there is overflow detected by the overlow bit in rflags, __ubsan_handle_add_overflow is called which will return a runtime error message and then continue to run the function. 
+Whether there was overflow or not, the function then compares n and the sum like it did when compiled with -O2 -fwrapv, sets rax to 0 or 1 accordingly, and then pops the stack before returning.
