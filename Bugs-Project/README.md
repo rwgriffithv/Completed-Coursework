@@ -3,7 +3,7 @@
 *3 March 2017*  
 
 
-This project wasand focused on object oriented programming in C++.  
+This project was focused on object oriented programming in C++.  
 Microsoft Visual Studio 2015 was used to devlop the program.
 
 I wrote Actor.h, Actor.cpp, StudentWorld.h, Studentworld.cpp, TestAnt.bug, and report.txt. <br />
