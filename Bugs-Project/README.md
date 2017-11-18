@@ -1,7 +1,9 @@
 # Bugs Project
-*3 March 2017*
+**CS 32: Introduction to Computer Science II**  
+*3 March 2017*  
 
-This project was focused on object oriented programming in C++. <br />
+
+This project wasand focused on object oriented programming in C++.  
 Microsoft Visual Studio 2015 was used to devlop the program.
 
 I wrote Actor.h, Actor.cpp, StudentWorld.h, Studentworld.cpp, TestAnt.bug, and report.txt. <br />
