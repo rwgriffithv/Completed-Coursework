@@ -1,4 +1,4 @@
-# Compressed Network Communication
+# Compressed Network Communication <\br>
 **CS 111: Operating Systems Principles**
 *1 February 2018*
 
