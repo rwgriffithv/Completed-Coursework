@@ -1,0 +1,40 @@
+NAME: Robert Griffith
+EMAIL: rwgriffithv@gmail.com
+ID: XXXXXXXXX
+
+The files included in this distribution are:
+    lab1b-client.c
+	This file contains the source code of the client program. The program requires a --port
+	option of the format --port=# where # is replaced by the desired portnumber. This is
+	used to establish the socket connection between the client program and the server program.
+	The client program also supports the option --compress which will deflate output to the
+	server and inflate data coming from the server. --compress must be passed to both programs
+	or neither program. There can be no mismatch. The option --log=filename is also supported,
+	which will log all data transmitted between the client and the server, in whatever form
+	it is sent. This will log whether the data is received or sent, as well as the number of
+	bytes sent or received.
+
+    lab1b-server.c
+	This file contains the source code for the program running the server side of this socket
+	connection. The client and server currently connect only on the localhost, as they do not
+	support a --host option, but a port must be specified. The server program requires this
+	port option and supports a --compress option that uses zlib specifications to deflate
+	outgoing messages across the socket and inflate incoming deflated messages from the client.
+	The server is coded to specifically support only one client connection, as the spec did not
+	specify how many would be needed. The server has a child process running a bash shell, and
+	all input from the client is fed to the shell, and all output from the shell is fed to the
+	client.
+
+     README
+	This file is what is currently being read, and contains information about the distribution
+	and its files.
+
+     Makefile
+	This makefile supports make with no options, clean, and dist. Default make will build the
+	program with -lz -Wall and -Wextra, while clean will remove any files created by make or make
+	dist. make dist will build a distribution tarball.
+
+The linux manual pages were used heavily as reference when writing lab1a.c, and the website
+linux.die.net provided these manual pages. Code involving the use of sockets and zlib shown
+by the TAs was used heavily as reference. The zlib webpage was very helpful in understanding the
+library.
