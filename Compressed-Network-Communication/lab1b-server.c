@@ -1,5 +1,5 @@
 //NAME: Robert Griffith
-//EMAIL: rwgriffithv@gmail.com
+//EMAIL: xxxxxxxxxxxxxxxxxxxxx
 //ID: XXXXXXXXX
 //lab1b-server.c
 
