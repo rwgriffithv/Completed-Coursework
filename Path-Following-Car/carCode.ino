@@ -1,4 +1,4 @@
-//McaRT: Robert Griffith 304833256, Taasin Saquib 304757196, Michael Zhou 804663317
+//McaRT: Robert Griffith, Taasin Saquib 304757196, Michael Zhou
 #include <stdio.h>
  
 int sensorValue_LEFT;  //A0
