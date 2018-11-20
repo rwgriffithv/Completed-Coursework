@@ -1,0 +1,32 @@
+Robert Griffith
+304833256
+CS 131 HW 4
+
+I started the assignment by writing plain_tower/3 first, which has a
+loosely measured average runtime of 34 ms. The predicate meets all
+required specs, and works with any or all of its arguments (including
+N) as a logical variable. I was able to implement the predicate and
+all other predicates it uses rather simply. The way valid_rows
+'simultaneously' goes through rows and columns minimizes backtracking.
+
+I then implemented essentially the same set of rules for tower/3,
+but used finite domain predicates when applicable. It was a simple
+conversion. tower/3 works like plain_tower/3, with any or all of its
+arguments being logical variables.
+
+The speedup/1 predicate runs a variety of test cases (of course being
+the same tests for both tower/3 and plain_tower/3), and has to run many
+of them to acumulate a significant amount of time. The ratio found is
+approximately 1.67 on average. There would be a more significant speedup
+if my plain_tower/3 predicate was not so surpisingly fast.
+
+The ambiguous/4 predicate is very simple and yields the following as the
+first set of ambiguous tower matrices.
+
+
+ambiguous(N,C,T1,T2).
+
+C = counts([1,2,2,4],[4,2,2,1],[1,2,2,4],[4,2,2,1])
+N = 4
+T1 = [[4,3,2,1],[3,1,4,2],[2,4,1,3],[1,2,3,4]]
+T2 = [[4,3,2,1],[3,4,1,2],[2,1,4,3],[1,2,3,4]]
