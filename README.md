@@ -11,6 +11,6 @@ This repository contains a collection of various computer science and electrical
 | EE 3  | [IR Path Following CAR](https://github.com/rwgriffithv/Completed-Coursework/tree/master/Path_Following_Car) |
 | CS 33 | [Stack Smashing Lab](https://github.com/rwgriffithv/Completed-Coursework/tree/master/Stack_Smashing) |
 | CS 111| [Compressed-Network-Communication](https://github.com/rwgriffithv/Completed-Coursework/tree/master/Compressed_Network_Communication) |
-| CS M152A | [Whack Some Moles](https://github.com/rwgriffithv/Completed-Coursework/tree/master/Whack_Some_Moles) |
 | CS 131 | [Scheme Code Difference Analyzer](https://github.com/rwgriffithv/Completed-Coursework/tree/master/Scheme_Code_Diff) |
 | CS 131 | [Towers Solver](https://github.com/rwgriffithv/Completed-Coursework/tree/master/Towers_Solver) |
+| CS M152A | [Whack Some Moles](https://github.com/rwgriffithv/Completed-Coursework/tree/master/Whack_Some_Moles) |
