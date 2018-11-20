@@ -8,7 +8,7 @@
 The two GNU Prolog predicates tower/3 and plain_tower/3 solve tower puzzles. <br />
 tower/3 makes use of the GNU Prolog finite domain solver, while plain_tower/3 does not. <br />
 
-tower/3 and plain_tower/3 accepts the following arguments: <br />
+tower/3 and plain_tower/3 accepts the following arguments:
 * N, a nonnegative integer specifying the size of the square grid.
 * T, a list of N lists, each representing a row of the square grid. Each row is represented by a list of N distinct integers from 1 through N. The corresponding columns also contain all the integers from 1 through N.
 * C, a structure with function symbol counts and arity 4. Its arguments are all lists of N integers, and represent the tower counts for the top, bottom, left, and right edges, respectively.
