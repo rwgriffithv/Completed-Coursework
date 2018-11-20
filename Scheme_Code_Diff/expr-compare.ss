@@ -1,11 +1,10 @@
 ;; Robert Griffith
 ;; CS 131 Fall 2019
 
-;; creates a proper list, as shown in piazza post @157, for %-separated outputs
 (define (comp-output-list x y)
   (list 'if '% x y))
 
-(define (quote-var-val x)
+(define (output-quote-var-val x)
   (list 'quote x))
 
 (define (is-special-form x)
@@ -95,7 +94,7 @@
   [(#f #t)
    (list 'not '%)]
   [((list 'quote ex) (list 'quote ey))
-   (comp-output-list (quote-var-val ex) (quote-var-val ey))]
+   (comp-output-list (output-quote-var-val ex) (output-quote-var-val ey))]
   [((list 'lambda args bodyx) (list 'lambda args bodyy))
    (list 'lambda args (expr-compare bodyx bodyy))]
   [((list 'lambda argsx bodyx) (list 'lambda argsy bodyy))
