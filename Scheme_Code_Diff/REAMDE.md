@@ -1,1 +1,0 @@
-Scheme Code Difference Analyzer
