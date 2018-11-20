@@ -12,3 +12,5 @@ This repository contains a collection of various computer science and electrical
 | CS 33 | [Stack Smashing Lab](https://github.com/rwgriffithv/Completed-Coursework/tree/master/Smashing-Lab) |
 | CS 111| [Compressed-Network-Communication](https://github.com/rwgriffithv/Completed-Coursework/tree/master/Compressed-Network-Communication) |
 | CS M152A | [Whack Some Moles](https://github.com/rwgriffithv/Completed-Coursework/tree/master/Whack_Some_Moles) |
+| CS 131 | [Scheme Code Difference Analyzer](https://github.com/rwgriffithv/Completed-Coursework/tree/master/Scheme_Code_Diff) |
+
